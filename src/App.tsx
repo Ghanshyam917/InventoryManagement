@@ -3,10 +3,11 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import Login from './User/Login';
 import Signup from './User/Signup';
-import Dashboard from './Pages/Dashboard';
+// import Dashboard from './Pages/Dashboard';
 import ForgotPassword from './User/ForgotPassword';
 import ResetPassword from './User/ResetPassword';
 import BeforeLogin from './Pages/BeforeLogin';
+import InventoryPage from './Pages/InventoryPage';
 
 const ProtectedRoute: React.FC<{ element: React.ReactElement }> = ({ element }) => {
   const { isAuthenticated } = useAuth();
@@ -15,7 +16,7 @@ const ProtectedRoute: React.FC<{ element: React.ReactElement }> = ({ element }) 
 
 const PublicRoute: React.FC<{ element: React.ReactElement }> = ({ element }) => {
   const { isAuthenticated } = useAuth();
-  return isAuthenticated ? <Navigate to="/dashboard" /> : element;
+  return isAuthenticated ? <Navigate to="/inventory" /> : element;
 };
 
 function AppRoutes() {
@@ -44,9 +45,13 @@ function AppRoutes() {
           path="/reset-password" 
           element={<ResetPassword />} 
         />
-        <Route 
+        {/* <Route 
           path="/dashboard" 
           element={<ProtectedRoute element={<Dashboard />} />} 
+        /> */}
+        <Route 
+          path="/inventory" 
+          element={<ProtectedRoute element={<InventoryPage />} />} 
         />
       </Routes>
     </div>

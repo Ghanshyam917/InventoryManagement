@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Eye, EyeOff, UserPlus, Upload,BarChart3 } from 'lucide-react';
+import { Eye, EyeOff, UserPlus, BarChart3 } from 'lucide-react';
 import GoogleSignInButton from '../Components/GoogleSignInButton';
 
 interface SignupProps {

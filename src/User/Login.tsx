@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Eye, EyeOff, LogIn, Upload,BarChart3 } from 'lucide-react';
+import { Eye, EyeOff, LogIn,BarChart3 } from 'lucide-react';
 import GoogleSignInButton from '../Components/GoogleSignInButton';
 
 interface LoginProps {
@@ -18,6 +18,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [rememberMe, setRememberMe] = useState(false);
   
   const location = useLocation();
   const state = location.state as LocationState;
@@ -25,6 +26,16 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
   useEffect(() => {
     if (state?.passwordReset) {
       setSuccessMessage('Your password has been reset successfully. Please log in with your new password.');
+    }
+    const savedEmail = localStorage.getItem('rememberedEmail');
+    const savedPassword = localStorage.getItem('rememberedPassword');
+    if (savedEmail) {
+      setEmail(savedEmail);
+      setRememberMe(true);
+    }
+    if (savedPassword) {
+      setPassword(savedPassword);
+      setRememberMe(true);
     }
   }, [state]);
 
@@ -41,6 +52,14 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
       newErrors.password = 'Password is required';
     } else if (password.length < 6) {
       newErrors.password = 'Password must be at least 6 characters';
+    }
+    console.log(rememberMe)
+    if (rememberMe) {
+      localStorage.setItem('rememberedEmail', email);
+      localStorage.setItem('rememberedPassword', password);
+    } else {
+      localStorage.removeItem('rememberedEmail');
+      localStorage.removeItem('rememberedPassword');
     }
     
     setErrors(newErrors);
@@ -132,6 +151,8 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
                     id="remember-me"
                     name="remember-me"
                     type="checkbox"
+                    onChange={(e) => setRememberMe(e.target.checked)}
+                    checked={rememberMe}
                     className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                   />
                   <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-700">
