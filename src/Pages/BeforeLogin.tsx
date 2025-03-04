@@ -152,7 +152,7 @@ function BeforeLogin() {
                     <div className="py-1">
                       <div className="px-4 py-3">
                         <p className="text-sm text-gray-500">Welcome to</p>
-                        <p className="text-sm font-medium text-gray-900 truncate">Inventory Management</p>
+                        <p className="text-sm font-medium text-gray-900 truncate">InventoryPro</p>
                       </div>
                     </div>
                     
@@ -799,8 +799,6 @@ function BeforeLogin() {
         </div>
       </section>
 
-      
-      
       {/* Footer */}
       <footer className="bg-gray-800 text-white py-12">
         <div className="container mx-auto px-6 max-w-6xl">

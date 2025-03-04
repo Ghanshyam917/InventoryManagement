@@ -74,7 +74,7 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({
         />
       )}
       <motion.div
-        className="fixed top-0 right-0 h-full bg-white shadow-lg z-50 overflow-y-auto w-80"
+        className="fixed top-0 right-0 h-full bg-white shadow-lg z-50 overflow-y-auto w-120"
         initial={{ x: '100%' }}
         animate={{ x: isOpen ? 0 : '100%' }}
         transition={{ type: 'spring', damping: 25, stiffness: 300 }}

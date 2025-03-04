@@ -211,12 +211,12 @@ const InventoryPage: React.FC = () => {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <header className="bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex justify-between items-center">
-            <div className='flex items-center gap-2'>
+            <a href='/' className='flex items-center gap-2'>
             <BarChart3 className="h-8 w-8 text-indigo-600" />
             <h1 className="text-2xl font-bold text-gray-900">InventoryPro</h1>
-            </div>
+            </a>
             <div className="flex space-x-2">
               <Button
                 variant="outline"
@@ -241,7 +241,7 @@ const InventoryPage: React.FC = () => {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <main className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         {/* Tabs */}
         <div className="mb-6 border-b">
           <div className="flex hide-scrollbar">
